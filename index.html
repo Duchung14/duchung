@@ -3,39 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prime Sum Calculator</title>
-    <link rel="stylesheet" href="./index.js">
+    <title>Document</title>
 </head>
 <body>
-    <h1>Prime Sum Calculator</h1>
-    <form id="primeSumForm">
-        <label for="a">Enter a:</label>
-        <input type="number" id="a" name="a" required>
-
-        <label for="b">Enter b (greater than a):</label>
-        <input type="number" id="b" name="b" required>
-
-        <button type="button" onclick="calculatePrimeSum()">Calculate</button>
-
-        <p id="result"></p>
-    </form>
-
-    <script>
-        async function calculatePrimeSum() {
-            const a = document.getElementById('a').value;
-            const b = document.getElementById('b').value;
-
-            const response = await fetch('/calculate', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ a, b }),
-            });
-
-            const data = await response.json();
-            document.getElementById('result').innerText = `Sum of prime numbers between ${a} and ${b}: ${data.result}`;
-        }
-    </script>
+    
+    <script src="index.js"></script>
+    
+    
+   
 </body>
 </html>
