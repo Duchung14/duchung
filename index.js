@@ -1,35 +1,35 @@
-const input1 = document.getElementById("inputUsername");
-const input2 = document.getElementById("inputPassword");
+const express = require('express');
+const app = express();
+const port = 3000;
 
-let users = [{
-    username: "duchung14",
-    password: "141004",
-    address: "HD",
-    status: "active",
-},
+app.use(express.static('public'));
+app.use(express.json());
 
-{
-    username: "duchung14",
-    password: "141004",
-    address: "HD",
-    status: "inactive",
+app.post('/calculate', (req, res) => {
+    const a = parseInt(req.body.a);
+    const b = parseInt(req.body.b);
+    const result = calculatePrimeSum(a, b);
+    res.json({ result });
+});
+
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
 }
-]
 
-
-function login(username, password) {
-    let result = ""
-    if (!username || !password) {
-        result = "Please input your username"
-    } else {
-        let userValid = users.find((user) => user.username === username)
-        if (!userValid || userValid.password !== password) {
-            result = "Username or password not match"
-        }
-        else if (userValid.status === "active") {
-            result = "Log in successfully"
+function calculatePrimeSum(a, b) {
+    let sum = 0;
+    for (let i = a; i <= b; i++) {
+        if (isPrime(i)) {
+            sum += i;
         }
     }
-    alert(result)
+    return sum;
 }
-login(input1,input2)
+
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
