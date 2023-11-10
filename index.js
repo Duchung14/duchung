@@ -1,7 +1,7 @@
-function numberOneTriangle(n) {
+function numberOneTriangle(5) {
     
     if (n < 1 || n > 10) {
-        console.log(" nhập một số trong khoảng từ 1 đến 10.");
+        console.log("5");
         return;
     }
 
